@@ -1,12 +1,10 @@
 ## Repo description 
 
 The files found in this folder relates to the assignment of W3 (see below). To run the script download this folder and install the necessary packages found at the top of in the script:
-xxxxxxx
+os, sys, pathlib, cv2, pandas 
 
-You can then run the script __assignmentW3_visual_analytics.py__
-When the script has been run with the sample data (xxxx .jpg files stored in the folder 'data') it should produce xxxxxxxx x files, that will be placed in the folder 'output'. 
-
-Along with the images the script should produce a csv file (also found in the output folder) which contains information about xxxxxx 
+You can then run the script __image_search.py__
+When the script has been run with the sample data (1300 .jpg files stored in the folder 'data') it should produce a  .csv file (which will be placed in the output folder) which contains histogram comparisons. 
 
 
 ## Assignment description 
