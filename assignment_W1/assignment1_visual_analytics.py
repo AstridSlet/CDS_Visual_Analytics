@@ -3,10 +3,25 @@ import sys
 import cv2
 from pathlib import Path # for filepaths 
 import numpy as np
-from PIL import Image
 import glob # for fetching images 
 import pandas as pd # for storing image info 
-import matplotlib # for saving image
+import matplotlib as plt # for saving image
+import imageio # for saving images
+
+# define image split function
+def image_function(im):
+    image = np.asarray(im) # make file into array
+    height = image.shape[0] # get the height (no. of rows)
+    width = image.shape[1] # get the width (no. of collumns)
+    top_left_im = image[0:int(height/2), 0:int(width/2)]
+    array_list.append(top_left_im)
+    top_right_im = image[0:int(height/2), int(width/2):]
+    array_list.append(top_right_im)
+    bottom_left_im = image[int(height/2):, 0:int(width/2)]
+    array_list.append(bottom_left_im)
+    bottom_right_im = image[int(height/2):, int(width/2):]
+    array_list.append(bottom_right_im)
+    return array_list
 
 # define path to image files
 images_path = os.path.join(os.path.join("data"))
@@ -18,8 +33,9 @@ nchannels_list = []
 filename_list = []
 
 # create loop that loads all files into a list - and save the file name of each file in another list
-for filename in Path(images_path).glob("*.jpg"):
-    im = Image.open(filename) # open file
+for each_file in Path(images_path).glob("*.jpg"):
+    file_name = Path(str(each_file)).stem # get filename 
+    im = cv2.imread(str(each_file))# open file
     image = np.asarray(im) # make file into array
     height = image.shape[0] # get the height (no. of rows)
     width = image.shape[1] # get the width (no. of collumns)
@@ -46,36 +62,21 @@ array_list = []
 # create list to store which quadrant of image
 name_list = ["top_left_im", "top_right_im","bottom_left_im", "bottom_right_im"]
 
-# define image split function
-def image_function(im):
-    image = np.asarray(im) # make file into array
-    height = image.shape[0] # get the height (no. of rows)
-    width = image.shape[1] # get the width (no. of collumns)
-    top_left_im = image[0:int(height/2), 0:int(width/2)]
-    array_list.append(top_left_im)
-    top_right_im = image[0:int(height/2), int(width/2):]
-    array_list.append(top_right_im)
-    bottom_left_im = image[int(height/2):, 0:int(width/2)]
-    array_list.append(bottom_left_im)
-    bottom_right_im = image[int(height/2):, int(width/2):]
-    array_list.append(bottom_right_im)
-    return array_list
-
 # loop through images
 for filename in Path(images_path).glob("*.jpg"):
-    file_name = Path(filename).stem
-    print(file_name)
-    im_file = Image.open(filename)
+    file_name = Path(str(filename)).stem
+    im_file = cv2.imread(str(filename))
     image_function(im_file)
     for i, k in zip(array_list, name_list):
         i =np.ascontiguousarray(i)
         # define output path and image name 
         outpath = os.path.join("output", f"{file_name}_{k}.jpg")
         # save image 
-        matplotlib.image.imsave(f"{outpath}", i)
+        print(type(i))
+        imageio.imsave(f"{outpath}", i)
 
 
-# Not sure if I need to include the lines below... 
+# Include info for when the script is run from terminal
 if __name__ =="__main__":
     main()
 
