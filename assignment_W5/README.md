@@ -2,6 +2,42 @@
 
 The files found in this folder relates to the assignment of W5 (see below). 
 
+The script takes an input image, draws a green rectancle around the text (based on four given input numbers that define the rectancle) and produces 1) an image with the rectangle drawn onto it, 2) an image cropped on the basis of that rectangle, 3) an image where the objects of the cropped image are highlighted with green using canny edge detection. 
+All three images are saved in the output folder. 
+
+The main script at this repo is called edge_detection.py
+
+In order to run the scrip you need to create the venv __cv101__. To do this you download this folder. Then you cd into the folder and run:
+
+`$ bash create_vision_venv.sh`
+
+You then need to activate the environment by running: 
+
+`$ source cv101/bin/activate`
+
+You can now use the scrip by running: 
+
+`$ python edge_detection.py`
+
+
+The script takes the following inputs: 
+
+* "-i", "--infile": Input filename placed in folder 'data', type = str, default = "image.png"
+* "-t", "--top": No. of pixels towards top of picture from center", type = int, default=750
+* "-b", "--bottom": "No. of pixels towards bottom of picture from center", type = int, default=1180
+* "-l", "--left": "No. of pixels towards left of picture from center", type = int, default=800
+* "-r", "--right": "No. of pixels towards right of picture from center", type = int, default=700
+
+All arguemnts above are not required. If nothing else is specified the code will run with the example image "image.png" from the data folder. If you wish to add your own image, you simply place it in the 'data' folde rand change the -i argument to the image name. You can then play around with the four other arguments to draw the box around the text on the input image. 
+
+
+
+
+
+
+
+
+
 ## Assignment description 
 
 ###Assignment 3 - Edge detection
