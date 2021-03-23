@@ -22,23 +22,26 @@ You then need to activate the environment by running:
 You can now use the scripts by cd into the src folder running either of the scripts: 
 
 * logistic regression: 
+
 `$ python lr-mnist.py`
 
-* neurla network: 
+* neural network: 
+
 `$ python nn-mnist.py`
 
-You can change the number 
+All arguemnts above are not required. If nothing else is specified the code will run with the default settings:
 
-All arguemnts above are not required. If nothing else is specified the code will run with the default settings. 
+* For the logistic regression: 
 
-For the logistic regression: 
 The script will run using the sklearn data set mnist_784, the train/test split will be 0.2 and the output name will be metrics_logreg.csv. 
 You can change the input data set name from sklearn using the argument -i, the train/test split using -s and the output file name using -o. 
 
-For the neural network: 
-The script will run using the sklearn dataset 'digits',  the train/test split will be 0.2, the output name will be metrics_nn.csv and the number of epochs will be 1000. 
+* For the neural network: 
 
-You can change the input data set name from sklearn using the argument -i, the train/test split using -s, the output file name using -o and the number of epochs using -e. 
+The script will run using the sklearn dataset 'digits',  the train/test split will be 0.2, the output name will be metrics_nn.csv and the number of epochs will be 1000. The neural network as a default has two hidden layers.
+
+You can change the input dataset from sklearn using the argument -i, the train/test split using -s, the output file name using -o and the number of epochs using -e. 
+
 
 
 
