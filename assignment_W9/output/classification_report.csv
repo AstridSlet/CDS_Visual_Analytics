@@ -1,0 +1,9 @@
+,precision,recall,f1-score,support
+Degas,0.34,0.47,0.39,99.0
+Gauguin,0.77,0.1,0.18,99.0
+Monet,0.49,0.38,0.43,99.0
+VanGogh,0.57,0.52,0.54,99.0
+Cezanne,0.39,0.7,0.5,99.0
+accuracy,0.43,0.43,0.43,0.43
+macro avg,0.51,0.43,0.41,495.0
+weighted avg,0.51,0.43,0.41,495.0
